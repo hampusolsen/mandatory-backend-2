@@ -1,8 +1,15 @@
 const { List, Ticket, Task } = require("../../config/database").models;
 
 module.exports.findTicketsMinified = (listId) => {
+  const fieldOpts = {
+    title: 1,
+    created: 1,
+    description: 1,
+    parent_id: 1,
+  };
+
   return new Promise((resolve, reject) => {
-    Ticket.find({ parent_id: listId }, { title: 1, marked_for_review: 1, current_index: 1, description: 1 }, (err, tickets) => {
+    Ticket.find({ parent_id: listId }, fieldOpts, (err, tickets) => {
       if (err) return reject(err);
       return resolve(tickets);
     });

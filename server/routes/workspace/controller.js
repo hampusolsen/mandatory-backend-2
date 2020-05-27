@@ -1,8 +1,12 @@
 const { generatePassword } = require("../../lib/password_utils");
 const { User, Workspace, List, Ticket } = require("../../config/database").models;
 const { findLists, findTicketsMinified, addList } = require("./dbhandlers");
+const { validationResult } = require("express-validator");
 
 module.exports.createWorkspace = async (req, res, next) => {
+  const err = validationResult(req);
+  if (!err.isEmpty()) return next(err);
+
   const { title, password, userId } = req.body;
   const admins = [userId];
 
@@ -30,13 +34,15 @@ module.exports.retrieveListData = async (req, res, next) => {
 };
 
 module.exports.createList = (req, res, next) => {
+  const err = validationResult(req);
+  if (!err.isEmpty()) return next(err);
+
   const { workspaceId } = req.params;
-  const { title, current_index } = req.body;
+  const { title } = req.body;
 
   const newList = {
     parent_id: workspaceId,
     title,
-    current_index,
     created: Date.now(),
   };
 

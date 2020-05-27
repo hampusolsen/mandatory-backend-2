@@ -1,7 +1,11 @@
 const { generatePassword, validatePassword } = require("../../lib/password_utils");
 const { User } = require("../../config/database").models;
+const { validationResult } = require("express-validator");
 
 function login(req, res, next) {
+  const err = validationResult(req);
+  if (!err.isEmpty()) return next(err);
+
   const { email, password } = req.body;
 
   User.findOne({ email })
@@ -20,6 +24,9 @@ function login(req, res, next) {
 }
 
 function register(req, res, next) {
+  const err = validationResult(req);
+  if (!err.isEmpty()) return next(err);
+
   const { hash, salt } = generatePassword(req.body.password);
 
   const user = new User({
