@@ -1,0 +1,83 @@
+.LoginForm {
+  width: 100%;
+  margin-bottom: 24px;
+  &__field {
+    margin-bottom: 24px;
+    width: 100%;
+    position: relative;
+  }
+  &__field-error {
+    position: absolute;
+    left: 0;
+    bottom: -18px;
+    font-size: 12px;
+    font-family: $bread-font;
+    color: orange;
+  }
+  &__field-info {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid grey;
+    position: absolute;
+    right: 6px;
+    top: 58%;
+    &:hover::before {
+      opacity: 1;
+      transition: opacity 0.2s;
+    }
+    &::after {
+      content: "i";
+      font-size: 12px;
+      font-weight: bold;
+      font-family: $title-font;
+      color: grey;
+      position: absolute;
+      left: 36%;
+    }
+    &::before {
+      content: "Password must contain 1-24 characters and include at least one numerical. Only !?.,_- special characters allowed.";
+      pointer-events: none;
+      position: absolute;
+      left: 120%;
+      top: 50%;
+      width: 180px;
+      background-color: black;
+      color: orange;
+      z-index: 2;
+      padding: 8px;
+      border: 1px solid grey;
+      border-radius: 4px;
+      opacity: 0;
+      font-family: $bread-font;
+    }
+  }
+  input {
+    width: 100%;
+    height: 32px;
+    padding-left: 6px;
+    box-sizing: border-box;
+    background-color: $grey;
+    border: 1px solid darkgrey;
+    border-radius: 4px;
+    color: $white;
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 10px rgba($color: #000000, $alpha: 1);
+      border-color: lightgrey;
+      background-color: #444;
+    }
+    &::placeholder {
+      color: lightgrey;
+    }
+  }
+  label {
+    display: block;
+    font-family: $title-font;
+    color: $white;
+    margin-bottom: 8px;
+  }
+  &__submit-button {
+    @include button--filled(orange, whitesmoke);
+  }
+}

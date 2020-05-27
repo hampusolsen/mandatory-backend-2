@@ -1,0 +1,15 @@
+.Clock {
+  color: $white;
+  font-family: $bread-font;
+  width: 120px;
+  padding-bottom: 8px;
+  &__time {
+    font-size: 48px;
+  }
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 0px 4px;
+  }
+}

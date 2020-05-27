@@ -1,0 +1,53 @@
+.TicketMinified {
+  background-color: lighten($color: $grey, $amount: 15);
+  border-radius: 4px;
+  margin-bottom: 12px;
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  &:hover {
+    & button {
+      background-color: lighten($color: $grey, $amount: 25);
+    }
+  }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+  &__menu {
+    display: flex;
+    flex-direction: row;
+  }
+  &__title {
+    font-family: $title-font;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 2;
+  }
+  &__link {
+    color: $white;
+    height: 30px;
+    width: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  &__desc {
+    font-family: $bread-font;
+    font-size: 13px;
+    padding: 0 12px;
+    margin-bottom: 16px;
+  }
+  &__date {
+    text-align: end;
+    font-family: $bread-font;
+    font-size: 10px;
+  }
+}

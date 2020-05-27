@@ -1,0 +1,78 @@
+@import "../RegistrationForm/RegistrationForm";
+@import "../LoginForm/LoginForm";
+
+.Landing {
+  height: 100%;
+  width: 100%;
+  background-color: $grey;
+  &__background {
+    position: absolute;
+    left: calc(50% - 420px);
+    top: calc(50% - 210px - 105px);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 12px;
+    width: 840px;
+    height: 630px;
+  }
+  &__background-box {
+    background-image: url("../../assets/landing_bg.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    &:nth-of-type(1),
+    &:nth-of-type(9) {
+      background-image: none;
+    }
+    &:nth-of-type(3) {
+      grid-column: 3 / 5;
+    }
+    &:nth-of-type(4) {
+      grid-column: 2 / 4;
+    }
+    &:nth-of-type(5) {
+      grid-row: 2 / 4;
+    }
+  }
+  &__form-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: $white;
+    width: 400px;
+    padding: 26px 34px;
+    background-color: rgba($color: $black, $alpha: 0.85);
+  }
+  &__form-title {
+    font-family: $title-font;
+    font-size: 28px;
+    color: orange;
+    margin-bottom: 32px;
+  }
+  .button--text {
+    float: right;
+    color: $white;
+    font-family: $button-font;
+    font-size: 16px;
+    position: relative;
+    &::after {
+      content: ">>";
+      color: orange;
+      position: absolute;
+      right: -8px;
+      height: 100%;
+    }
+    &::before {
+      content: "Go to ";
+      position: absolute;
+      left: -26px;
+      height: 100%;
+    }
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      text-decoration-thickness: 2px;
+      text-decoration-color: orange;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.Card {
+  animation: slideIn 0.3s 0.1s ease-out forwards;
+  min-width: 420px;
+  min-height: 380px;
+  background-color: whitesmoke;
+  padding: 64px 32px 32px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(50px);
+  box-shadow: 0 1px 10px 2px rgba($color: #000000, $alpha: 0.8);
+  &__header {
+    min-width: 280px;
+    height: 52px;
+    background-color: $deeppurple;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -26px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.3);
+  }
+  &__title {
+    color: $white;
+    font-family: $title-font;
+    font-weight: bold;
+  }
+  &__footer {
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

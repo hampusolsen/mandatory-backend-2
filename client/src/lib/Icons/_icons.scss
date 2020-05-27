@@ -1,0 +1,437 @@
+@mixin i--vertical($w) {
+  width: $w * 0.85;
+  height: $w;
+}
+
+@mixin i--horizontal($w) {
+  width: $w;
+  height: $w * 0.85;
+}
+
+@mixin i--defaults($c, $w) {
+  border: $w * 0.1 solid $c;
+  border-radius: $w * 0.15;
+  display: inline-block;
+  position: relative;
+}
+
+@mixin triangle($size: 12px, $direction: "top", $color: white) {
+  width: 0;
+  height: 0;
+  border: $size solid transparent;
+  border-#{$direction}-color: $color;
+}
+
+@mixin icon--message($c: white, $w: 24px) {
+  @include i--defaults($c, $w);
+  @include i--horizontal($w);
+  &::after,
+  &::before {
+    content: "";
+    width: $w * 0.6;
+    height: $w * 0.1;
+    background-color: $c;
+    position: absolute;
+    top: 0;
+  }
+  &::after {
+    left: 0;
+    transform-origin: left;
+    transform: rotate(45deg);
+  }
+  &::before {
+    right: 0;
+    transform-origin: right;
+    transform: rotate(-45deg);
+  }
+}
+
+@mixin icon--workspace($fc: white, $w: 24px, $bg: $deeppurple) {
+  @include i--defaults($fc, $w);
+  @include i--horizontal($w);
+  &::after {
+    content: "";
+    position: absolute;
+    width: $w * 0.6;
+    height: $w * 0.15;
+    top: 50%;
+    left: 50%;
+    border: solid $fc;
+    border-width: $w * 0.1 0 $w * 0.1 0;
+    border-bottom-style: dashed;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin icon--workspace-create($fc: white, $w: 24px, $bg: $deeppurple) {
+  @include i--defaults($fc, $w);
+  @include i--horizontal($w);
+  &::after {
+    content: "";
+    position: absolute;
+    width: $w * 0.6;
+    height: $w * 0.15;
+    top: 50%;
+    left: 50%;
+    border: solid $fc;
+    border-width: $w * 0.1 0 $w * 0.1 0;
+    border-bottom-style: dashed;
+    transform: translate(-50%, -50%);
+  }
+  &::before {
+    content: "+";
+    font-size: 18px;
+    position: absolute;
+    color: $fc;
+    background-color: $bg;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    width: $w * 0.7;
+    height: $w * 0.7;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+  }
+}
+
+@mixin icon--workspace-new($c: white, $w: 24px, $bg: black) {
+  @include i--defaults($c, $w);
+  @include i--horizontal($w);
+  &::after {
+    content: "";
+    position: absolute;
+    width: $w * 0.6;
+    height: $w * 0.15;
+    top: 50%;
+    left: 50%;
+    border: solid $c;
+    border-width: $w * 0.1 0 $w * 0.1 0;
+    border-bottom-style: dashed;
+    transform: translate(-50%, -50%);
+  }
+  &::before {
+    content: "!";
+    font-size: 18px;
+    position: absolute;
+    color: $c;
+    background-color: $bg;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    width: $w * 0.7;
+    height: $w * 0.7;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+  }
+}
+
+@mixin icon--profile($fc: white, $w: 24px, $bg: black) {
+  width: $w;
+  height: $w;
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+  &::after,
+  &::before {
+    content: "";
+    background-color: $bg;
+    border-radius: 50%;
+    border: $w * 0.1 solid $fc;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &::after {
+    width: $w * 0.5;
+    height: $w * 0.5;
+  }
+  &::before {
+    width: $w;
+    height: $w * 0.7;
+    top: $w * 0.5;
+  }
+}
+
+@mixin icon--review($fc: white, $w: 24px) {
+  width: $w;
+  height: $w;
+  display: inline-block;
+  position: relative;
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+  }
+  &::after {
+    top: 0;
+    left: 0;
+    width: $w * 0.5;
+    height: $w * 0.5;
+    border-radius: 50%;
+    border: $w * 0.1 solid $fc;
+  }
+  &::before {
+    background-color: $fc;
+    width: $w * 0.5;
+    height: 3px;
+    border-radius: 1px;
+    transform: rotate(45deg);
+    top: 65%;
+    left: 45%;
+  }
+}
+
+@mixin icon--success($fc: white, $size: 24px) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  border: $size * 0.05 solid $fc;
+  position: relative;
+  display: inline-block;
+  &::after,
+  &::before {
+    content: "";
+    background-color: $fc;
+    height: $size * 0.05;
+    border-radius: ($size * 0.05) / 2;
+  }
+  &::after {
+    width: $size * 0.55;
+    position: absolute;
+    top: 52%;
+    left: 32%;
+    transform: rotate(-45deg);
+  }
+  &::before {
+    width: $size * 0.35;
+    position: absolute;
+    top: 60%;
+    left: 12%;
+    transform: rotate(45deg);
+  }
+}
+
+@mixin icon--arrow($color: $white, $size: 24px, $backgroundColor: $black) {
+  display: inline-block;
+  position: relative;
+  width: $size;
+  height: $size;
+  &::after,
+  &::before {
+    content: "";
+    background-color: $color;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: $size * 0.65;
+    height: 3px;
+    border-radius: 1px;
+    transform-origin: right;
+  }
+  &::after {
+    transform: translate(-50%, -1px) rotate(-45deg);
+  }
+  &::before {
+    transform: translate(-50%, 1px) rotate(45deg);
+  }
+}
+
+@mixin icon--key($color: white, $size: 24px, $backgroundColor: transparent) {
+  width: $size;
+  height: $size;
+  display: inline-block;
+  position: relative;
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &::after {
+    background-color: $backgroundColor;
+    top: 7%;
+    width: $size * 0.2;
+    height: $size * 0.2;
+  }
+  &::before {
+    background-color: $color;
+    top: 0;
+    width: $size * 0.5;
+    height: $size * 0.5;
+  }
+  &__tip {
+    height: $size * 0.4;
+    width: $size * 0.2;
+    background-color: $color;
+    position: absolute;
+    left: 50%;
+    bottom: $size * 0.2;
+    transform: translateX(-50%);
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: $size * 0.1 solid transparent;
+      border-top-color: $color;
+      bottom: -($size * 0.2);
+    }
+  }
+  &__indents {
+    @include triangle($size * 0.1, "left", $backgroundColor);
+    position: absolute;
+    top: 58%;
+    left: 40%;
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+    }
+    &::after {
+      @include triangle($size * 0.1, "left", $backgroundColor);
+      transform: translate(-50%, 10%);
+    }
+    &::before {
+      @include triangle($size * 0.1, "left", $backgroundColor);
+      transform: translate(-70%, -100%);
+    }
+  }
+}
+
+@mixin icon--plus($color: white, $size: 24px) {
+  display: inline-block;
+  width: $size;
+  height: $size;
+  position: relative;
+  &::after,
+  &::before {
+    content: "";
+    background-color: $color;
+    width: 3px;
+    height: $size;
+    border-radius: 1px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+  }
+  &::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  &::before {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.i--workspace {
+  @include icon--workspace($white, 24px, $grey);
+}
+
+.i--workspace-new {
+  @include icon--workspace-new($white, 24px, $deeppurple);
+}
+
+.i--workspace-create {
+  @include icon--workspace-create($white, 24px, $deeppurple);
+}
+
+.i--message {
+  @include icon--message($white, 24px);
+}
+
+.i--profile {
+  @include icon--profile($white, 24px, $deeppurple);
+}
+
+.i--review {
+  @include icon--review($white, 24px);
+}
+
+.i--arrow {
+  @include icon--arrow($white, 24px, black);
+  &--left {
+    transform: scaleX(-1);
+  }
+  &--up {
+    transform: rotateZ(-90deg);
+  }
+  &--down {
+    transform: rotateZ(90deg);
+  }
+}
+
+.i--key {
+  @include icon--key($white, 32px, black);
+}
+
+.i--plus {
+  @include icon--plus($white, 24px);
+}
+
+@mixin icon--close($size: 24px, $fc: $white) {
+  width: $size;
+  height: $size;
+  position: relative;
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: $fc;
+    width: $size * 0.75;
+    height: $size * 0.175;
+    border-radius: $size * 0.1;
+    top: 50%;
+    left: 50%;
+  }
+  &::after {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  &::before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+.i--close {
+  @include icon--close(18px);
+}
+
+@mixin icon--edit($size: 24px, $color: $white) {
+  width: $size * 0.8;
+  height: $size * 0.25;
+  background-color: $color;
+  position: relative;
+  transform: rotate(-45deg);
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+  }
+  &::after {
+    left: -$size * 0.3;
+    width: 0;
+    height: 0;
+    border: $size * 0.18 solid transparent;
+    border-right-color: $color;
+  }
+  &::before {
+    background-color: $color;
+    border-top-right-radius: $size * 0.075;
+    border-bottom-right-radius: $size * 0.075;
+    height: $size * 0.2;
+    width: $size * 0.15;
+    right: -$size * 0.2;
+  }
+}
+
+.i--edit {
+  @include icon--edit(16px);
+}

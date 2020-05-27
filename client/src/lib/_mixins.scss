@@ -1,0 +1,29 @@
+@mixin button--filled($bg: orange, $color: whitesmoke) {
+  text-transform: uppercase;
+  background-color: $bg;
+  color: $color;
+  &:hover {
+    background-color: lighten($color: $bg, $amount: 15);
+  }
+  &:active {
+    background-color: darken($color: $bg, $amount: 5);
+  }
+}
+
+@mixin button--text($color: black) {
+  text-transform: uppercase;
+  background-color: rgba($color: $color, $alpha: 0);
+  color: $color;
+  transition: 0.1s;
+  font-family: $button-font;
+  min-width: 62px;
+  height: 36px;
+  font-size: 14px;
+  border-radius: 4px;
+  &:hover {
+    background-color: rgba($color: $color, $alpha: 0.2);
+  }
+  &:active {
+    background-color: rgba($color: $color, $alpha: 0.3);
+  }
+}
