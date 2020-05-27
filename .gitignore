@@ -1,5 +1,5 @@
-/CURRENT.md
-/README.md
-/server/.env
-/server/node_modules
-/client/node_modules
+CURRENT.md
+README.md
+server/.env
+server/node_modules
+client/node_modules
